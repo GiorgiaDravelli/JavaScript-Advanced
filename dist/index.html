@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BookSearch</title>
+    <link rel="icon" type="image/x-icon" href="/src/assets/library.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  </head>
+  <body>
+    <header>
+      <!-- header -->
+      <nav class="navbar">
+        <div class="container-fluid">
+          <a class="navbar-brand">BookSearch</a>
+        </div>
+      </nav>
+    </header>
+    <!-- barra di ricerca principale -->
+    <div class="searchbar-container container">
+      <form class="d-flex" role="search">
+        <h3>Find your book</h3>
+        <input id="search-bar" class="form-control me-2" type="search" placeholder="Search a book by subject" aria-label="Search">
+        <button type="button" id="search-btn" class="btn btn-outline-dark" type="submit">Search</button>
+      </form>
+
+      <!-- spazio per lista libri -->
+      <div  class="list-group container">
+        <div id="container" class="row justify-content-center">
+      </div>
+      
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="./bundle.js"></script>
+  </body>
+</html>

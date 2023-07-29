@@ -1,0 +1,53 @@
+body {
+  background-color: beige;
+}
+
+.searchbar-container {
+  margin-top: 10rem;
+  flex-direction: column;
+  position: relative;
+}
+
+.list-group {
+  display: flex;
+  margin-top: 6rem;
+}
+
+.card-container {
+  margin-top: 6rem;
+  margin-bottom: 6rem;;
+}
+
+nav {
+  background-color: rgba(0, 102, 92, 0.722);
+}
+
+.navbar-brand {
+  font-size: 2.5rem;
+}
+
+#search-bar {
+  border-color: rgb(36, 34, 34);
+  font-size: 1.5rem;
+}
+
+#search-btn {
+  font-size: 1.5rem;
+}
+
+.card {
+  border-color: rgb(140, 134, 134);
+  background-color: rgba(196, 202, 201, 0.474);
+}
+
+h3 {
+  text-align: right;
+  margin-right: 2rem;
+}
+
+@media screen and (max-width: 600px) {
+  h3 {
+    position: absolute;
+    top: -2.5rem;
+  }
+}
