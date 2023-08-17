@@ -2,13 +2,17 @@ import getBooks from "./getBooks.js"
 import "./css/styles.css"
 
 const searchButton = document.getElementById("search-btn");
-
-const container = document.getElementById("container");
+const searchBar = document.getElementById("search-bar");
+let bookContainer = document.getElementById("container");
 
 function getData(){
+
+  bookContainer.innerHTML = "";
+
   try {
-    const value = document.getElementById("search-bar").value;
-    const valueLower = value.toLowerCase();
+    
+    const value = searchBar.value;
+    const valueLower = searchBar.value.trim().toLowerCase().replaceAll(" ", "");
     if (!value) {
       alert("Please insert a valid search value");
       return false;
@@ -20,15 +24,14 @@ function getData(){
       .then(response => response.json())
       .then(data => {
         console.log(data)
-       
-        const books = data.works;
+        let books = data.works;
         getBooks(books);
     
         return;
       })
       .catch(error => {
         if ( response.status == 404) {
-          alert("We could not find the book you are looking for.");
+          alert("We could not find the book you are looking for. Try typing a valid category.");
           return;
         } else if (response.status != 200) {
           alert ("An error has occurred during your request: " + error.message);
@@ -46,14 +49,22 @@ function getData(){
         alert("An error has occurred during your request.");
       })
     
-    
   } catch (err) {
-    alert ("Something went wrong" + err.message);
+    alert ("Something went wrong, we couldn't find the book you are searching for. Error: " + err.message);
     console.error(err.message);
+
+  } finally {
+    searchBar.value = "";
   }
 };
 
 searchButton.addEventListener("click", getData);
+searchBar.addEventListener('keydown', (e)=> {  
+  if (e.key === 'Enter') {
+      e.preventDefault()
+      getData()
+      }
+    })
 
 
 

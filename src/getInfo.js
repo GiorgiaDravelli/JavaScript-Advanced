@@ -1,3 +1,4 @@
+import newElement from "./newElement.js";
 
 function getInfo(book, cardBody, descriptionBtn) {
   const url = `https://openlibrary.org${book.key}.json`;
@@ -6,14 +7,10 @@ function getInfo(book, cardBody, descriptionBtn) {
     .then(response => response.json())
     .then(data => {
 
-      const bookDescription = document.createElement("p");
-      bookDescription.className = "card-text d-none";
-      bookDescription.innerHTML = data.description;
+      const bookDescription = newElement("p", "card-text d-none", data.description)
       cardBody.appendChild(bookDescription);
 
-      const closeBtn = document.createElement("button");
-      closeBtn.className = "description-btn btn btn-outline-secondary d-none";
-      closeBtn.innerHTML = "Close"
+      const closeBtn = newElement("button", "description-btn btn btn-outline-secondary d-none", "Close")
       cardBody.appendChild(closeBtn);
 
       descriptionBtn.addEventListener("click", function () {
@@ -28,7 +25,10 @@ function getInfo(book, cardBody, descriptionBtn) {
         bookDescription.className = "d-none";
       });
     })
-    .catch(error => console.error(error.message));
+    .catch( error => {
+      alert ("Something went wrong, we couldn't find the description for this book. Error: " + err.message);
+      console.error(err.message);
+    });
 }
 
 export default getInfo;
