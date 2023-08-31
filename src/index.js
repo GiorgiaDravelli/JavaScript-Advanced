@@ -4,8 +4,11 @@ import "./css/styles.css"
 const searchButton = document.getElementById("search-btn");
 const searchBar = document.getElementById("search-bar");
 let bookContainer = document.getElementById("container");
+let form = document.getElementById("form");
 
-function getData(){
+function getData(e){
+
+  e.preventDefault();
 
   bookContainer.innerHTML = "";
 
@@ -58,13 +61,7 @@ function getData(){
   }
 };
 
-searchButton.addEventListener("click", getData);
-searchBar.addEventListener('keydown', (e)=> {  
-  if (e.key === 'Enter') {
-      e.preventDefault()
-      getData()
-      }
-    })
+form.addEventListener("submit", getData);
 
 
 
