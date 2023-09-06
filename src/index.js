@@ -1,14 +1,17 @@
 import getBooks from "./getBooks.js"
 import "./css/styles.css"
+import newElement from "./newElement.js";
 
 const searchButton = document.getElementById("search-btn");
 const searchBar = document.getElementById("search-bar");
-let bookContainer = document.getElementById("container");
-let form = document.getElementById("form");
+const bookContainer = document.getElementById("container");
+const form = document.getElementById("form");
+const loader = document.getElementById("loader");
 
 function getData(e){
-
   e.preventDefault();
+
+  let isLoading = true;
 
   bookContainer.innerHTML = "";
 
@@ -28,7 +31,16 @@ function getData(e){
       .then(data => {
         console.log(data)
         let books = data.works;
+        let isLoading = false;
         getBooks(books);
+        
+
+        if (!books || books.length === 0) {
+          const noBooks = newElement("div", "card-body text-center", "We couldn't find the books you were looking for. Please make sure you entered a valid subject and try again.")
+          bookContainer.appendChild(noBooks);
+        } else if (isLoading == true) {
+          loader.style.visibility = "visible";
+        }
     
         return;
       })
@@ -40,16 +52,6 @@ function getData(e){
           alert ("An error has occurred during your request: " + error.message);
           return
           }
-    
-        if (response.status == 200) {
-          data.work_count === 0 ? alert("Subject not found") : books;
-        } else {
-          alert("An error occurred: " + error.message);
-          return;
-        }
-
-        console.error(error.message);
-        alert("An error has occurred during your request.");
       })
     
   } catch (err) {
