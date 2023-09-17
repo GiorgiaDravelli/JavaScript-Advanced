@@ -18,7 +18,7 @@ function getData(e){
   try {
     
     const value = searchBar.value;
-    const valueLower = searchBar.value.trim().toLowerCase().replaceAll(" ", "");
+    const valueLower = searchBar.value.trim().toLowerCase().replaceAll(" ", "_");
     if (!value) {
       alert("Please insert a valid search value");
       return false;
