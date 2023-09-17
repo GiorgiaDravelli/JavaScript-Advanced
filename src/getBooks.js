@@ -28,7 +28,7 @@ function getBooks (books){
     const descriptionBtn = newElement("button", "description-btn btn btn-outline-secondary", "Description");
     cardBody.appendChild(descriptionBtn);
 
-    getInfo(book, cardBody, descriptionBtn);
+    getInfo(book, books, cardBody, descriptionBtn);
   })
  return;
 }
